@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://be82bxrbrik84"]
+
+[ext_resource type="Script" path="res://Scripts/EntityControllers/jumper_controller.gd" id="1_yg73a"]
+[ext_resource type="PackedScene" uid="uid://hl0qpvk6wr4y" path="res://Scenes/EntityControllers/ControllerComponents/wall_detector.tscn" id="2_pjadd"]
+
+[node name="JumperController" type="Node"]
+script = ExtResource("1_yg73a")
+
+[node name="WallDetector" parent="." instance=ExtResource("2_pjadd")]

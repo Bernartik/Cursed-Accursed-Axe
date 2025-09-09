@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2isfv0fsqsc5"]
+
+[ext_resource type="Script" path="res://Scripts/World/room_detector.gd" id="1_kslof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qabs"]
+size = Vector2(13.5, 24.25)
+
+[node name="RoomDetector" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_kslof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.875)
+shape = SubResource("RectangleShape2D_1qabs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

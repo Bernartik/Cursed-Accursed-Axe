@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=4 uid="uid://dr8jjy7xm1urj"]
+
+[ext_resource type="Script" path="res://Scripts/World/base_room.gd" id="1_y4u1m"]
+[ext_resource type="TileSet" uid="uid://dvra1x4y51k8d" path="res://Resources/Tilesets/tileset.tres" id="2_0bbw3"]
+[ext_resource type="PackedScene" uid="uid://cjvr44xf112r3" path="res://Scenes/World/room_door.tscn" id="2_jn45t"]
+[ext_resource type="PackedScene" uid="uid://c2isfv0fsqsc5" path="res://Scenes/World/room_detector.tscn" id="3_d2ch7"]
+[ext_resource type="TileSet" uid="uid://dm26akootlccv" path="res://Resources/Tilesets/platforms.tres" id="3_t1yn3"]
+[ext_resource type="PackedScene" uid="uid://bv32xjeounvl3" path="res://Scenes/World/entity_spawner.tscn" id="6_s6o8k"]
+[ext_resource type="PackedScene" uid="uid://cfru2jpj2sly5" path="res://Scenes/Entities/Enemies/slime.tscn" id="7_0sypv"]
+[ext_resource type="PackedScene" uid="uid://co2yprp57hhof" path="res://Scenes/Entities/Enemies/spike_trap.tscn" id="8_avyw2"]
+
+[node name="Room2" type="Node2D"]
+script = ExtResource("1_y4u1m")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAwAKAAAAAAAAAAEAAwAJAAIAAAABAAEAAwAJAAIAAAACAAEAAwAJAAIAAAADAAEAAwAJAAIAAAAEAAEAAwAJAAIAAAAFAAEAAwAJAAIAAAAGAAEAAwAJAAIAAAACAAAAAwAKAAAAAAABAAAAAwAKAAAAAAADAAAAAwAKAAAAAAAEAAAAAwAKAAAAAAAFAAAAAwAKAAAAAAAGAAAAAwAKAAAAAAAHAAAAAwAKAAAAAAAIAAAAAwAKAAAAAAAJAAAAAwAKAAAAAAAKAAAAAwAKAAAAAAALAAAAAwAKAAAAAAALAAEAAwAJAAIAAAAKAAEAAwAJAAIAAAAJAAEAAwAJAAIAAAAIAAEAAwAJAAIAAAAHAAEAAwAJAAIAAAAMAAEAAwAJAAIAAAANAAEAAwAJAAIAAAANAAAAAwAKAAAAAAAMAAAAAwAKAAAAAAAOAAAAAwAKAAAAAAAOAAEAAwAJAAIAAAAAAP3/AwAGAAIAAAAAAP7/AwALAAMAAAABAP3/AwAJAAMAAAACAP3/AwALAAMAAAACAPz/AwAGAAIAAAABAPz/AwAJAAIAAAADAPz/AwAJAAMAAAAEAPz/AwAJAAMAAAAFAPz/AwAJAAMAAAAGAPz/AwAJAAMAAAAHAPz/AwAJAAMAAAAIAPz/AwAJAAMAAAAJAPz/AwAJAAMAAAAKAPz/AwAJAAMAAAALAPz/AwAFAAIAAAAMAPz/AwAJAAIAAAANAPz/AwAJAAIAAAALAP3/AwAIAAMAAAAMAP3/AwAJAAMAAAANAP3/AwAFAAIAAAAOAP3/AwAJAAIAAAAOAP7/AwAJAAMAAAANAP7/AwAIAAMAAAAAAPz/AwAJAAIAAAABAPv/AwAJAAIAAAACAPv/AwAJAAIAAAADAPv/AwAJAAIAAAAEAPv/AwAJAAIAAAAFAPv/AwAJAAIAAAAGAPv/AwAJAAIAAAAHAPv/AwAJAAIAAAAIAPv/AwAJAAIAAAAJAPv/AwAJAAIAAAAKAPv/AwAJAAIAAAALAPv/AwAJAAIAAAAMAPv/AwAJAAIAAAANAPv/AwAJAAIAAAAOAPv/AwAJAAIAAAAOAPz/AwAJAAIAAAAAAPv/AwAJAAIAAAABAPr/AwAJAAIAAAACAPr/AwAJAAIAAAADAPr/AwAJAAIAAAAEAPr/AwAJAAIAAAAFAPr/AwAJAAIAAAAGAPr/AwAJAAIAAAAHAPr/AwAJAAIAAAAIAPr/AwAJAAIAAAAJAPr/AwAJAAIAAAAKAPr/AwAJAAIAAAALAPr/AwAJAAIAAAAMAPr/AwAJAAIAAAANAPr/AwAJAAIAAAAOAPr/AwAJAAIAAAAAAPr/AwAJAAIAAAAAAAIAAwAJAAIAAAAAAAMAAwAJAAIAAAABAAMAAwAJAAIAAAABAAIAAwAJAAIAAAACAAIAAwAJAAIAAAADAAIAAwAJAAIAAAAEAAIAAwAJAAIAAAAFAAIAAwAJAAIAAAAGAAIAAwAJAAIAAAAHAAIAAwAJAAIAAAAIAAIAAwAJAAIAAAAJAAIAAwAJAAIAAAAKAAIAAwAJAAIAAAALAAIAAwAJAAIAAAAMAAIAAwAJAAIAAAANAAIAAwAJAAIAAAAOAAIAAwAJAAIAAAAOAAMAAwAJAAIAAAANAAMAAwAJAAIAAAAMAAMAAwAJAAIAAAALAAMAAwAJAAIAAAAKAAMAAwAJAAIAAAAJAAMAAwAJAAIAAAAIAAMAAwAJAAIAAAAHAAMAAwAJAAIAAAAGAAMAAwAJAAIAAAAFAAMAAwAJAAIAAAAEAAMAAwAJAAIAAAADAAMAAwAJAAIAAAACAAMAAwAJAAIAAAAPAAEAAwAJAAIAAAAPAAIAAwAJAAIAAAA=")
+tile_set = ExtResource("2_0bbw3")
+
+[node name="Platforms" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_t1yn3")
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="EntitySpawner" parent="EnemySpawners" instance=ExtResource("6_s6o8k")]
+position = Vector2(424, -8)
+entity_scene = ExtResource("7_0sypv")
+facing_dir = -1
+
+[node name="EntitySpawner2" parent="EnemySpawners" instance=ExtResource("6_s6o8k")]
+position = Vector2(224, 0)
+entity_scene = ExtResource("8_avyw2")
+
+[node name="EntitySpawner3" parent="EnemySpawners" instance=ExtResource("6_s6o8k")]
+position = Vector2(320, 0)
+entity_scene = ExtResource("8_avyw2")
+
+[node name="EntitySpawner4" parent="EnemySpawners" instance=ExtResource("6_s6o8k")]
+position = Vector2(128, 0)
+entity_scene = ExtResource("8_avyw2")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="RoomDoor" parent="." instance=ExtResource("2_jn45t")]
+position = Vector2(472, 0)
+
+[node name="RoomDetector" parent="." instance=ExtResource("3_d2ch7")]
+position = Vector2(16, -8)
+
+[node name="RoomEnd" type="Marker2D" parent="."]
+position = Vector2(480, 0)

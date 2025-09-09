@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bscp73m2xcvn5"]
+
+[ext_resource type="Script" path="res://Scripts/World/room_camera_bounds.gd" id="1_lhaek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scp5i"]
+size = Vector2(0, 0)
+
+[node name="RoomCameraBounds" type="Area2D"]
+self_modulate = Color(1, 1, 1, 0.235294)
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_lhaek")
+boundary_width = 48
+boundary_height = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_scp5i")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

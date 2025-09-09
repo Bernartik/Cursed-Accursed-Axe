@@ -1,0 +1,169 @@
+[gd_scene load_steps=14 format=3 uid="uid://drarl3iv3qb87"]
+
+[ext_resource type="Script" path="res://Scripts/game_handler.gd" id="1_a7foq"]
+[ext_resource type="Script" path="res://Scripts/Camera/global_camera.gd" id="1_ifv68"]
+[ext_resource type="Script" path="res://Scripts/Camera/game_camera.gd" id="1_t4m4l"]
+[ext_resource type="Script" path="res://Scripts/cur_scene.gd" id="3_mwl0h"]
+[ext_resource type="Script" path="res://Scripts/cur_menu.gd" id="4_2lhen"]
+[ext_resource type="PackedScene" uid="uid://bygxqocly4t2m" path="res://Scenes/UI/gameplay_ui.tscn" id="4_rcwyt"]
+[ext_resource type="Script" path="res://Scripts/World/vfx_handler.gd" id="5_1nxwd"]
+[ext_resource type="PackedScene" uid="uid://c56aoyme8rjcu" path="res://Scenes/UI/label_holder_holder.tscn" id="5_1o2at"]
+
+[sub_resource type="Animation" id="Animation_pa384"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n0rgg"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aqw2p"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 1), Color(0.0352941, 0.0392157, 0.0784314, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6l6x5"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 0), Color(0.0352941, 0.0392157, 0.0784314, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5eckc"]
+_data = {
+"RESET": SubResource("Animation_pa384"),
+"default": SubResource("Animation_n0rgg"),
+"fade_in": SubResource("Animation_aqw2p"),
+"fade_out": SubResource("Animation_6l6x5")
+}
+
+[node name="GameHandler" type="Node"]
+process_mode = 3
+script = ExtResource("1_a7foq")
+
+[node name="Scenes" type="CanvasLayer" parent="."]
+
+[node name="GameContainer" type="SubViewportContainer" parent="Scenes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="GameViewport" type="SubViewport" parent="Scenes/GameContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(288, 162)
+render_target_update_mode = 4
+
+[node name="GameCamera" type="Camera2D" parent="Scenes/GameContainer/GameViewport"]
+script = ExtResource("1_t4m4l")
+
+[node name="CurScene" type="Node2D" parent="Scenes/GameContainer/GameViewport"]
+process_mode = 1
+script = ExtResource("3_mwl0h")
+
+[node name="VFXHandler" type="Node2D" parent="Scenes/GameContainer/GameViewport"]
+script = ExtResource("5_1nxwd")
+
+[node name="GameplayUI" parent="Scenes" instance=ExtResource("4_rcwyt")]
+offset_bottom = 35.326
+
+[node name="CurMenu" type="Control" parent="Scenes"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_2lhen")
+
+[node name="TextContainer" type="SubViewportContainer" parent="Scenes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="TextViewport" type="SubViewport" parent="Scenes/TextContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="TextCamera" type="Camera2D" parent="Scenes/TextContainer/TextViewport"]
+script = ExtResource("1_t4m4l")
+camera_mult = 3
+
+[node name="LabelHolderHolder" parent="Scenes/TextContainer/TextViewport" instance=ExtResource("5_1o2at")]
+
+[node name="Fade" type="ColorRect" parent="Scenes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0352941, 0.0392157, 0.0784314, 0)
+
+[node name="GlobalCamera" type="Camera2D" parent="."]
+position_smoothing_speed = 1.0
+script = ExtResource("1_ifv68")
+
+[node name="FadeAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Scenes/Fade")
+libraries = {
+"": SubResource("AnimationLibrary_5eckc")
+}
+
+[connection signal="animation_finished" from="FadeAnim" to="." method="_on_fade_anim_animation_finished"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=4 uid="uid://1k7c8v62oyqv"]
+
+[ext_resource type="Script" path="res://Scripts/World/base_room.gd" id="1_etpxq"]
+[ext_resource type="TileSet" uid="uid://dvra1x4y51k8d" path="res://Resources/Tilesets/tileset.tres" id="2_vau6s"]
+[ext_resource type="PackedScene" uid="uid://cjvr44xf112r3" path="res://Scenes/World/room_door.tscn" id="3_02cef"]
+[ext_resource type="PackedScene" uid="uid://bv32xjeounvl3" path="res://Scenes/World/entity_spawner.tscn" id="3_wyfy7"]
+[ext_resource type="PackedScene" uid="uid://c2isfv0fsqsc5" path="res://Scenes/World/room_detector.tscn" id="4_gp5oj"]
+[ext_resource type="PackedScene" uid="uid://co2yprp57hhof" path="res://Scenes/Entities/Enemies/spike_trap.tscn" id="4_jx0b6"]
+
+[node name="BaseRoom" type="Node2D"]
+script = ExtResource("1_etpxq")
+
+[node name="Tilemap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAAAAAwAKAAAAAAAEAAAAAwAKAAAAAAAFAP7/AwAIAAMAAAAFAP3/AwAFAAIAAAAEAP3/AwAJAAMAAAADAP3/AwAJAAMAAAACAP3/AwAJAAMAAAABAP3/AwAJAAMAAAADAAAAAwAKAAAAAAACAAAAAwAKAAAAAAABAAAAAwAKAAAAAAAAAAAAAwAKAAAAAAAAAP3/AwAGAAIAAAAAAPz/AwAJAAIAAAABAPz/AwAJAAIAAAACAPz/AwAJAAIAAAADAPz/AwAJAAIAAAAEAPz/AwAJAAIAAAAFAPz/AwAJAAIAAAAFAAEAAwAJAAIAAAAEAAEAAwAJAAIAAAADAAEAAwAJAAIAAAACAAEAAwAJAAIAAAABAAEAAwAJAAIAAAAAAAEAAwAJAAIAAAAAAAIAAwAJAAIAAAABAAIAAwAJAAIAAAABAAMAAwAJAAMAAAACAAMAAwAJAAMAAAADAAMAAwAJAAMAAAADAAIAAwAJAAIAAAAEAAIAAwAJAAIAAAAFAAIAAwAJAAIAAAACAAIAAwAJAAIAAAAFAAMAAwAJAAMAAAAEAAMAAwAJAAMAAAAAAAMAAwAJAAMAAAAAAPr/AwAKAAAAAAAAAPv/AwAJAAIAAAABAPv/AwAJAAIAAAACAPv/AwAJAAIAAAACAPr/AwAKAAAAAAABAPr/AwAKAAAAAAADAPr/AwAKAAAAAAAEAPr/AwAKAAAAAAAEAPv/AwAJAAIAAAADAPv/AwAJAAIAAAAFAPv/AwAJAAIAAAAFAPr/AwAKAAAAAAAAAP7/AwALAAMAAAA=")
+tile_set = ExtResource("2_vau6s")
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("3_wyfy7")]
+position = Vector2(136, -8)
+entity_scene = ExtResource("4_jx0b6")
+facing_dir = -1
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="RoomEnd" type="Marker2D" parent="."]
+position = Vector2(192, 0)
+
+[node name="RoomDoor" parent="." instance=ExtResource("3_02cef")]
+position = Vector2(168, 0)
+
+[node name="RoomDetector" parent="." instance=ExtResource("4_gp5oj")]
+position = Vector2(16, -8)

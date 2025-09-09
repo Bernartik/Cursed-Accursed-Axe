@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=4 uid="uid://b0kdvbhnd6xo6"]
+
+[ext_resource type="Script" path="res://Scripts/World/base_room.gd" id="1_i0k4r"]
+[ext_resource type="TileSet" uid="uid://dvra1x4y51k8d" path="res://Resources/Tilesets/tileset.tres" id="1_pjgle"]
+[ext_resource type="TileSet" uid="uid://dm26akootlccv" path="res://Resources/Tilesets/platforms.tres" id="2_ve8h3"]
+[ext_resource type="PackedScene" uid="uid://c2isfv0fsqsc5" path="res://Scenes/World/room_detector.tscn" id="3_s8ls4"]
+[ext_resource type="PackedScene" uid="uid://cjvr44xf112r3" path="res://Scenes/World/room_door.tscn" id="4_5m1w3"]
+[ext_resource type="PackedScene" uid="uid://bv32xjeounvl3" path="res://Scenes/World/entity_spawner.tscn" id="5_1qff5"]
+[ext_resource type="PackedScene" uid="uid://b7akkx3qwobd4" path="res://Scenes/Entities/Enemies/pot.tscn" id="6_yfkue"]
+[ext_resource type="PackedScene" uid="uid://co2yprp57hhof" path="res://Scenes/Entities/Enemies/spike_trap.tscn" id="7_bvv8v"]
+[ext_resource type="PackedScene" uid="uid://cfru2jpj2sly5" path="res://Scenes/Entities/Enemies/slime.tscn" id="8_tjfuf"]
+
+[node name="Room3" type="Node2D"]
+script = ExtResource("1_i0k4r")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAwAKAAAAAAAAAAEAAwAJAAIAAAAAAAIAAwAJAAIAAAABAAIAAwAJAAIAAAACAAIAAwAJAAIAAAADAAIAAwAJAAIAAAAEAAIAAwAJAAIAAAAFAAEAAwAJAAIAAAAEAAEAAwAJAAIAAAAEAAAAAwAKAAAAAAADAAAAAwAKAAAAAAACAAAAAwAKAAAAAAABAAAAAwAKAAAAAAABAAEAAwAJAAIAAAACAAEAAwAJAAIAAAADAAEAAwAJAAIAAAAFAAAAAwAKAAAAAAAGAAAAAwAKAAAAAAAHAAAAAwAKAAAAAAAIAAAAAwAKAAAAAAAJAAAAAwAKAAAAAAAGAAEAAwAJAAIAAAAHAAEAAwAJAAIAAAAIAAEAAwAJAAIAAAAJAAEAAwAJAAIAAAAKAAEAAwAJAAIAAAAKAAAAAwAKAAAAAAAFAAIAAwAJAAIAAAAGAAIAAwAJAAIAAAAHAAIAAwAJAAIAAAAIAAIAAwAJAAIAAAAJAAIAAwAJAAIAAAALAAEAAwAJAAIAAAALAAAAAwAKAAAAAAAKAAIAAwAJAAIAAAALAAIAAwAJAAIAAAAMAAEAAwAJAAIAAAANAAEAAwAJAAIAAAANAAIAAwAJAAIAAAAOAAIAAwAJAAIAAAANAAMAAwAJAAIAAAAMAAMAAwAJAAIAAAALAAMAAwAJAAIAAAAKAAMAAwAJAAIAAAAJAAMAAwAJAAIAAAAMAAIAAwAJAAIAAAANAAAAAwAKAAAAAAAMAAAAAwAKAAAAAAAOAAAAAwAKAAAAAAAOAAEAAwAJAAIAAAAOAP7/AwAIAAMAAAAOAP3/AwAIAAEAAAAOAPz/AwAIAAEAAAAOAPv/AwAIAAEAAAANAPr/AwAJAAMAAAAOAPr/AwAFAAIAAAAMAPn/AwAFAAIAAAALAPn/AwAJAAMAAAAKAPn/AwAJAAMAAAAJAPn/AwAJAAMAAAAIAPn/AwAJAAMAAAANAPn/AwAJAAIAAAAHAPn/AwAJAAMAAAAGAPn/AwAJAAMAAAAFAPn/AwAJAAMAAAAEAPn/AwAJAAMAAAADAPn/AwAJAAMAAAACAPn/AwAGAAIAAAABAPr/AwAJAAMAAAAAAPv/AwALAAIAAAAAAPr/AwAGAAIAAAAAAPz/AwALAAIAAAAAAP3/AwALAAIAAAAAAP7/AwALAAMAAAABAPn/AwAJAAIAAAACAPr/AwALAAMAAAAMAPr/AwAIAAMAAAAOAPn/AwAJAAIAAAAOAPj/AwAJAAIAAAANAPj/AwAJAAIAAAAMAPj/AwAJAAIAAAALAPj/AwAJAAIAAAAKAPj/AwAJAAIAAAAJAPj/AwAJAAIAAAAIAPj/AwAJAAIAAAAHAPj/AwAJAAIAAAAGAPj/AwAJAAIAAAAFAPj/AwAJAAIAAAAEAPj/AwAJAAIAAAADAPj/AwAJAAIAAAACAPj/AwAJAAIAAAABAPj/AwAJAAIAAAAAAPj/AwAJAAIAAAAAAPn/AwAJAAIAAAAOAAMAAwAJAAIAAAA=")
+tile_set = ExtResource("1_pjgle")
+
+[node name="Platforms" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAP3/AQAAAAAAAAADAP3/AQABAAAAAAAEAP3/AQACAAAAAAAGAPv/AQAAAAAAAAAHAPv/AQABAAAAAAAIAPv/AQACAAAAAAACAPn/AQAAAAAAAAADAPn/AQABAAAAAAAEAPn/AQACAAAAAAAKAPn/AQAAAAAAAAALAPn/AQABAAAAAAAMAPn/AQACAAAAAAAKAP3/AQAAAAAAAAALAP3/AQABAAAAAAAMAP3/AQACAAAAAAA=")
+tile_set = ExtResource("2_ve8h3")
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="EntitySpawner" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(112, -120)
+entity_scene = ExtResource("6_yfkue")
+
+[node name="EntitySpawner2" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(368, -120)
+entity_scene = ExtResource("6_yfkue")
+facing_dir = -1
+
+[node name="EntitySpawner3" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(208, -88)
+entity_scene = ExtResource("7_bvv8v")
+
+[node name="EntitySpawner4" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(272, -88)
+entity_scene = ExtResource("7_bvv8v")
+
+[node name="EntitySpawner5" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(112, -56)
+entity_scene = ExtResource("8_tjfuf")
+
+[node name="EntitySpawner6" parent="EnemySpawners" instance=ExtResource("5_1qff5")]
+position = Vector2(368, -56)
+entity_scene = ExtResource("8_tjfuf")
+facing_dir = -1
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="RoomDetector" parent="." instance=ExtResource("3_s8ls4")]
+position = Vector2(16, -8)
+
+[node name="RoomDoor" parent="." instance=ExtResource("4_5m1w3")]
+position = Vector2(456, 0)
+
+[node name="RoomEnd" type="Marker2D" parent="."]
+position = Vector2(480, 0)

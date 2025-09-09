@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgb7exabglt42"]
+
+[ext_resource type="Script" path="res://Scripts/World/main_game.gd" id="1_p62q4"]
+[ext_resource type="PackedScene" uid="uid://cp6f2q72fs5yv" path="res://Scenes/World/Rooms/room_spawner.tscn" id="1_uv0kx"]
+[ext_resource type="PackedScene" uid="uid://dbwndlkpw14yx" path="res://Scenes/Entities/Player/player_character.tscn" id="2_q1fry"]
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_p62q4")
+
+[node name="RoomSpawner" parent="." instance=ExtResource("1_uv0kx")]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_q1fry")]
+position = Vector2(-121, 29)

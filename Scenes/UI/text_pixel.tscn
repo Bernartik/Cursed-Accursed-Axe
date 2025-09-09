@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://btwmtwg3hptbn"]
+
+[ext_resource type="Script" path="res://Scripts/UI/text_pixel.gd" id="1_fiakb"]
+[ext_resource type="FontFile" uid="uid://2i5mfo5jcsss" path="res://Fonts/alagard.ttf" id="1_o0usr"]
+
+[node name="TextPixel" type="Node2D"]
+texture_filter = 1
+texture_repeat = 1
+script = ExtResource("1_fiakb")
+text_alignment = 2
+text_color = Color(0.921569, 0.929412, 0.913725, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+use_top_left = true
+
+[node name="LabelPlaceholder" type="Label" parent="Center"]
+modulate = Color(0.921569, 0.929412, 0.913725, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_o0usr")
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1

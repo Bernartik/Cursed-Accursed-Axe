@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://dn2pe2xm3sxi2"]
+
+[ext_resource type="PackedScene" uid="uid://btwmtwg3hptbn" path="res://Scenes/UI/text_pixel.tscn" id="1_7ec2y"]
+[ext_resource type="Script" path="res://Scripts/Menus/start.gd" id="1_hs6l5"]
+[ext_resource type="Script" path="res://Scripts/Menus/start_score.gd" id="2_6bpkq"]
+[ext_resource type="Texture2D" uid="uid://bj8kxi4w6qgqq" path="res://Sprites/Menu/cover_bg_monsters_ingame.png" id="2_tkxl7"]
+[ext_resource type="Texture2D" uid="uid://nu186jcid3qk" path="res://Sprites/Menu/title_ingame.png" id="3_jxnyf"]
+[ext_resource type="Script" path="res://Scripts/Menus/button.gd" id="4_imfqc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn85l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qa0u"]
+bg_color = Color(0.117647, 0.113725, 0.223529, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pldw4"]
+bg_color = Color(0.643137, 0.866667, 0.858824, 0.647059)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fnuv"]
+bg_color = Color(0.45098, 0.745098, 0.827451, 0.52549)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c78qy"]
+bg_color = Color(0.643137, 0.866667, 0.858824, 0.647059)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecel1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_hs6l5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(0, -32)
+texture = ExtResource("2_tkxl7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = -22.0
+offset_bottom = -22.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 18
+
+[node name="Title" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gn85l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 6
+
+[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/Title/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_6bpkq")
+
+[node name="Title" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer/Title/MarginContainer/Control"]
+position = Vector2(8, -28)
+texture = ExtResource("3_jxnyf")
+
+[node name="TextPixel2" parent="Control/MarginContainer/VBoxContainer/Title/MarginContainer/Control" instance=ExtResource("1_7ec2y")]
+position = Vector2(0, 17)
+is_static_text = true
+text_displayed = "CURRENT HIGH SCORE:"
+
+[node name="HighScore" parent="Control/MarginContainer/VBoxContainer/Title/MarginContainer/Control" instance=ExtResource("1_7ec2y")]
+position = Vector2(0, 35)
+is_static_text = true
+text_displayed = "0"
+
+[node name="Start" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qa0u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Start"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 6
+
+[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/Start/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextPixel" parent="Control/MarginContainer/VBoxContainer/Start/MarginContainer/Control" instance=ExtResource("1_7ec2y")]
+position = Vector2(0, -2)
+is_static_text = true
+text_displayed = "START"
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/Start"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_pldw4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fnuv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c78qy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ecel1")
+script = ExtResource("4_imfqc")
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Start/Button" to="." method="_on_button_start_pressed"]

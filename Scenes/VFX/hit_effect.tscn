@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpnnovqf8i5jo"]
+
+[ext_resource type="Script" path="res://Scripts/VFX/effect.gd" id="1_0g5ii"]
+
+[node name="HitEffect" type="AnimatedSprite2D"]
+script = ExtResource("1_0g5ii")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c56aoyme8rjcu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/label_holder_holder.gd" id="1_tbqon"]
+
+[node name="LabelHolderHolder" type="Node2D"]
+script = ExtResource("1_tbqon")

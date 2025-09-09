@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8xtyib0ix3he"]
+
+[ext_resource type="Script" path="res://Scripts/VFX/effect.gd" id="1_p6i8h"]
+
+[node name="BasicHit" type="AnimatedSprite2D"]
+script = ExtResource("1_p6i8h")
+effect_name = "basic_hit"
+effect_frames = 6

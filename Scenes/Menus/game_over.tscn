@@ -1,0 +1,233 @@
+[gd_scene load_steps=14 format=3 uid="uid://c888bw7ba1gpm"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/game_over.gd" id="1_dijda"]
+[ext_resource type="Script" path="res://Scripts/Menus/game_over_score.gd" id="2_co7cr"]
+[ext_resource type="PackedScene" uid="uid://btwmtwg3hptbn" path="res://Scenes/UI/text_pixel.tscn" id="2_qwgwq"]
+[ext_resource type="Script" path="res://Scripts/Menus/button.gd" id="4_y33qu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho1e8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qaqpw"]
+bg_color = Color(0.117647, 0.113725, 0.223529, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33nub"]
+bg_color = Color(0.643137, 0.866667, 0.858824, 0.647059)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14e1w"]
+bg_color = Color(0.45098, 0.745098, 0.827451, 0.52549)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oekxo"]
+bg_color = Color(0.643137, 0.866667, 0.858824, 0.647059)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o641b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_xrb43"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-320, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_w4ecd"]
+resource_name = "fade_in"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0352941, 0.0392157, 0.0784314, 0), Color(0.0352941, 0.0392157, 0.0784314, 0.8)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-328, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.333333, 0.9)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ychib"]
+_data = {
+"RESET": SubResource("Animation_xrb43"),
+"fade_in": SubResource("Animation_w4ecd")
+}
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dijda")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0392157, 0.0784314, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 31
+
+[node name="Score" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ho1e8")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 6
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Score/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_co7cr")
+
+[node name="TextPixel" parent="MarginContainer/VBoxContainer/Score/MarginContainer/Control" instance=ExtResource("2_qwgwq")]
+position = Vector2(0, -35)
+scale = Vector2(2, 2)
+is_static_text = true
+text_displayed = "FINAL SCORE:"
+text_scale = 4.0
+
+[node name="ScoreText" parent="MarginContainer/VBoxContainer/Score/MarginContainer/Control" instance=ExtResource("2_qwgwq")]
+position = Vector2(0, 5)
+scale = Vector2(2, 2)
+is_static_text = true
+text_displayed = "0"
+text_scale = 4.0
+
+[node name="HighScore" parent="MarginContainer/VBoxContainer/Score/MarginContainer/Control" instance=ExtResource("2_qwgwq")]
+position = Vector2(0, 45)
+scale = Vector2(2, 2)
+is_static_text = true
+text_displayed = "New High Score!!"
+text_scale = 4.0
+
+[node name="Retry" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qaqpw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Retry"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 6
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Retry/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextPixel" parent="MarginContainer/VBoxContainer/Retry/MarginContainer/Control" instance=ExtResource("2_qwgwq")]
+scale = Vector2(2, 2)
+is_static_text = true
+text_displayed = "RETRY"
+text_scale = 4.0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Retry"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_33nub")
+theme_override_styles/hover = SubResource("StyleBoxFlat_14e1w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oekxo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o641b")
+script = ExtResource("4_y33qu")
+
+[node name="Quit" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qaqpw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Quit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 6
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Quit/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextPixel" parent="MarginContainer/VBoxContainer/Quit/MarginContainer/Control" instance=ExtResource("2_qwgwq")]
+scale = Vector2(2, 2)
+is_static_text = true
+text_displayed = "MAIN MENU"
+text_scale = 4.0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Quit"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_33nub")
+theme_override_styles/hover = SubResource("StyleBoxFlat_14e1w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oekxo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o641b")
+script = ExtResource("4_y33qu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ychib")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Retry/Button" to="." method="_on_button_retry_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit/Button" to="." method="_on_button_quit_pressed"]

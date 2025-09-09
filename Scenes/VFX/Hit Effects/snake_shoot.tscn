@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnnf50w6mfvir"]
+
+[ext_resource type="Script" path="res://Scripts/VFX/effect.gd" id="1_ml13r"]
+
+[node name="SnakeShoot" type="AnimatedSprite2D"]
+script = ExtResource("1_ml13r")
+effect_name = "snake_shoot"
+effect_frames = 3

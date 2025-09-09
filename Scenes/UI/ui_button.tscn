@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0ssniugbfrs1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ui_button.gd" id="1_vt1x8"]
+
+[node name="UIButton" type="Button"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 1
+script = ExtResource("1_vt1x8")

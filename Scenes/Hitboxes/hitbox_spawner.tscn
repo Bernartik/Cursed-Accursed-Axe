@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vhemid1ci73d"]
+
+[ext_resource type="Script" path="res://Scripts/Hitboxes/hitbox_spawner.gd" id="1_p6imf"]
+
+[node name="HitboxSpawner" type="Marker2D"]
+self_modulate = Color(1, 1, 1, 0.368627)
+gizmo_extents = 2.0
+script = ExtResource("1_p6imf")
