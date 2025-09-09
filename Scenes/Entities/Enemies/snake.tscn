@@ -1,0 +1,157 @@
+[gd_scene load_steps=31 format=3 uid="uid://dm23lihu66whj"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Enemies/snake.gd" id="1_f5v5a"]
+[ext_resource type="PackedScene" uid="uid://2t4absf70mfw" path="res://Scenes/Entities/EntityStates/idle.tscn" id="2_ipbyu"]
+[ext_resource type="PackedScene" uid="uid://b256jkwxs85fb" path="res://Scenes/Entities/EntityStates/hurt.tscn" id="3_rpv5o"]
+[ext_resource type="PackedScene" uid="uid://di6d8qmvioxkk" path="res://Scenes/Entities/EntityStates/dead.tscn" id="4_ovetp"]
+[ext_resource type="PackedScene" uid="uid://45jtyik3mr6n" path="res://Scenes/Entities/EntityStates/snakeshoot_start.tscn" id="5_k1gyh"]
+[ext_resource type="PackedScene" uid="uid://c83e40r2slpbx" path="res://Scenes/Entities/EntityStates/snakeshoot_end.tscn" id="6_jdvii"]
+[ext_resource type="PackedScene" uid="uid://odqu5yxi82mk" path="res://Scenes/Entities/entity_sprite.tscn" id="7_u7x35"]
+[ext_resource type="PackedScene" uid="uid://vhemid1ci73d" path="res://Scenes/Hitboxes/hitbox_spawner.tscn" id="8_d62ia"]
+[ext_resource type="Texture2D" uid="uid://5qdwuk67son3" path="res://Sprites/Entities/Snake/snake9.png" id="8_d77k0"]
+[ext_resource type="Texture2D" uid="uid://br4vods8sn6ts" path="res://Sprites/Entities/Snake/snake1.png" id="9_dmx8p"]
+[ext_resource type="PackedScene" uid="uid://8xtyib0ix3he" path="res://Scenes/VFX/Hit Effects/basic_hit.tscn" id="9_mjitu"]
+[ext_resource type="Texture2D" uid="uid://cavneifc1ss6j" path="res://Sprites/Entities/Snake/snake2.png" id="10_nb6sw"]
+[ext_resource type="Texture2D" uid="uid://bnsd55y3qw3wu" path="res://Sprites/Entities/Snake/snake3.png" id="11_qgao0"]
+[ext_resource type="Texture2D" uid="uid://75ck81sekqlh" path="res://Sprites/Entities/Snake/snake4.png" id="12_elwgh"]
+[ext_resource type="Texture2D" uid="uid://bsb87ousg106s" path="res://Sprites/Entities/Snake/snake5.png" id="13_48r7j"]
+[ext_resource type="Texture2D" uid="uid://dsaemydov14fh" path="res://Sprites/Entities/Snake/snake6.png" id="14_qk6lg"]
+[ext_resource type="Texture2D" uid="uid://dn6eja2p5nt8y" path="res://Sprites/Entities/Snake/snake7.png" id="15_kwtd4"]
+[ext_resource type="Texture2D" uid="uid://dvv45x46odkts" path="res://Sprites/Entities/Snake/snake8.png" id="16_mjogm"]
+[ext_resource type="Texture2D" uid="uid://ck36fxsxeraiw" path="res://Sprites/Entities/Snake/snake14.png" id="17_bq06v"]
+[ext_resource type="Texture2D" uid="uid://46wepkymwl4f" path="res://Sprites/Entities/Snake/snake15.png" id="18_b2yjw"]
+[ext_resource type="Texture2D" uid="uid://dw1a8666ajije" path="res://Sprites/Entities/Snake/snake16.png" id="19_aliuj"]
+[ext_resource type="Texture2D" uid="uid://dyvkd24tnxwxm" path="res://Sprites/Entities/Snake/snake17.png" id="20_43vs4"]
+[ext_resource type="Texture2D" uid="uid://cukjtux0411ja" path="res://Sprites/Entities/Snake/snake18.png" id="21_ylbat"]
+[ext_resource type="Texture2D" uid="uid://bbg6e6c7r7amj" path="res://Sprites/Entities/Snake/snake10.png" id="22_srbkr"]
+[ext_resource type="Texture2D" uid="uid://bx0hh2sldckw7" path="res://Sprites/Entities/Snake/snake11.png" id="23_mwik8"]
+[ext_resource type="Texture2D" uid="uid://dwwt0ev0sfauy" path="res://Sprites/Entities/Snake/snake12.png" id="24_tb22u"]
+[ext_resource type="Texture2D" uid="uid://bhw1rnj0rs4vm" path="res://Sprites/Entities/Snake/snake13.png" id="25_n6rk8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6qy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_d77k0")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dmx8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nb6sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qgao0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_elwgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_48r7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qk6lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kwtd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mjogm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_bq06v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_b2yjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_aliuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_43vs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ylbat")
+}],
+"loop": false,
+"name": &"SnakeshootEnd",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_srbkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_mwik8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tb22u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_n6rk8")
+}],
+"loop": false,
+"name": &"SnakeshootStart",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2norr"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw28o"]
+size = Vector2(15, 16)
+
+[node name="Snake" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_f5v5a")
+state = "Idle"
+move_speed = 0
+jump_speed = 0
+
+[node name="EntityStates" type="Node" parent="."]
+
+[node name="Idle" parent="EntityStates" instance=ExtResource("2_ipbyu")]
+
+[node name="Hurt" parent="EntityStates" instance=ExtResource("3_rpv5o")]
+
+[node name="Dead" parent="EntityStates" instance=ExtResource("4_ovetp")]
+
+[node name="SnakeshootStart" parent="EntityStates" instance=ExtResource("5_k1gyh")]
+
+[node name="SnakeshootEnd" parent="EntityStates" instance=ExtResource("6_jdvii")]
+
+[node name="EntitySprite" parent="." instance=ExtResource("7_u7x35")]
+position = Vector2(8, -16)
+sprite_frames = SubResource("SpriteFrames_p6qy0")
+animation = &"SnakeshootStart"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2norr")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_mw28o")
+debug_color = Color(0.319774, 0.624375, 0.0691147, 0.42)
+
+[node name="HitboxSpawner" parent="." instance=ExtResource("8_d62ia")]
+position = Vector2(0, -7)
+spawn_on_ready = true
+hitbox_height = 14
+hitbox_width = 8
+hit_effect = ExtResource("9_mjitu")
+sound_effects = Array[String](["strike1", "hit"])

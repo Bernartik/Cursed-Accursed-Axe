@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gs85vbm7gvel"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/jumpturn.gd" id="1_vuc0t"]
+
+[node name="Jumpturn" type="Node"]
+script = ExtResource("1_vuc0t")

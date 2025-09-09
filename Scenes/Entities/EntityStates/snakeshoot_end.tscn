@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c83e40r2slpbx"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/snake_shoot_end.gd" id="1_e1vmp"]
+
+[node name="SnakeshootEnd" type="Node"]
+script = ExtResource("1_e1vmp")

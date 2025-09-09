@@ -1,0 +1,99 @@
+[gd_scene load_steps=18 format=3 uid="uid://b7akkx3qwobd4"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Enemies/dummy.gd" id="1_tfa65"]
+[ext_resource type="PackedScene" uid="uid://2t4absf70mfw" path="res://Scenes/Entities/EntityStates/idle.tscn" id="2_tc6du"]
+[ext_resource type="PackedScene" uid="uid://b256jkwxs85fb" path="res://Scenes/Entities/EntityStates/hurt.tscn" id="3_wsmhu"]
+[ext_resource type="PackedScene" uid="uid://di6d8qmvioxkk" path="res://Scenes/Entities/EntityStates/dead.tscn" id="4_vtf2v"]
+[ext_resource type="PackedScene" uid="uid://odqu5yxi82mk" path="res://Scenes/Entities/entity_sprite.tscn" id="5_m3iqe"]
+[ext_resource type="Texture2D" uid="uid://btias8q6hrqmv" path="res://Sprites/Entities/Pot/pot7.png" id="6_6olbf"]
+[ext_resource type="Texture2D" uid="uid://kjxdqypbj8qp" path="res://Sprites/Entities/Pot/pot1.png" id="7_jv0br"]
+[ext_resource type="Texture2D" uid="uid://b77xw23gjbbwc" path="res://Sprites/Entities/Pot/pot2.png" id="8_regt4"]
+[ext_resource type="Texture2D" uid="uid://cvjmrj6tdba4s" path="res://Sprites/Entities/Pot/pot3.png" id="9_wgyaj"]
+[ext_resource type="Texture2D" uid="uid://cfl4aq72mjvxb" path="res://Sprites/Entities/Pot/pot4.png" id="10_swxij"]
+[ext_resource type="Texture2D" uid="uid://bfbbx847oub5x" path="res://Sprites/Entities/Pot/pot5.png" id="11_dqapw"]
+[ext_resource type="Texture2D" uid="uid://b4u320cfjjsqu" path="res://Sprites/Entities/Pot/pot6.png" id="12_putgl"]
+[ext_resource type="PackedScene" uid="uid://vhemid1ci73d" path="res://Scenes/Hitboxes/hitbox_spawner.tscn" id="13_y54vp"]
+[ext_resource type="PackedScene" uid="uid://8xtyib0ix3he" path="res://Scenes/VFX/Hit Effects/basic_hit.tscn" id="14_p5dxr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pd4gy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6olbf")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jv0br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_regt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wgyaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_swxij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dqapw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_putgl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4od6j"]
+size = Vector2(12, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fff1e"]
+size = Vector2(18, 18)
+
+[node name="Pot" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_tfa65")
+health_max = 2
+state = "Idle"
+score_value = 1
+
+[node name="EntityStates" type="Node" parent="."]
+
+[node name="Idle" parent="EntityStates" instance=ExtResource("2_tc6du")]
+
+[node name="Hurt" parent="EntityStates" instance=ExtResource("3_wsmhu")]
+
+[node name="Dead" parent="EntityStates" instance=ExtResource("4_vtf2v")]
+
+[node name="EntitySprite" parent="." instance=ExtResource("5_m3iqe")]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_pd4gy")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_4od6j")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_fff1e")
+debug_color = Color(0.539656, 0.817073, 0.0617414, 0.42)
+
+[node name="HitboxSpawner" parent="." instance=ExtResource("13_y54vp")]
+position = Vector2(0, -7)
+spawn_on_ready = true
+hitbox_height = 14
+hitbox_width = 13
+hit_effect = ExtResource("14_p5dxr")
+sound_effects = Array[String](["strike1", "hit"])

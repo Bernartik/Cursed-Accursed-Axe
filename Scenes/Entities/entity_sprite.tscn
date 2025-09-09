@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://odqu5yxi82mk"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/entity_sprite.gd" id="1_38qc4"]
+
+[node name="EntitySprite" type="AnimatedSprite2D"]
+script = ExtResource("1_38qc4")

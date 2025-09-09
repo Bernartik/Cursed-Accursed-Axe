@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw3xrf35fdc53"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/walk.gd" id="1_uf4wd"]
+
+[node name="Walk" type="Node"]
+script = ExtResource("1_uf4wd")

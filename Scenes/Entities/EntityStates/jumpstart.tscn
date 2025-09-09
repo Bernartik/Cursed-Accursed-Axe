@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbqg7ek6fcg7o"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/jumpstart.gd" id="1_oqhqr"]
+
+[node name="Jumpstart" type="Node"]
+script = ExtResource("1_oqhqr")

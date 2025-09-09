@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cprnfetm7uukl"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/float_forward.gd" id="1_x2ev0"]
+
+[node name="FloatForward" type="Node"]
+script = ExtResource("1_x2ev0")

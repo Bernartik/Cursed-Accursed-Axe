@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf10jl14ko3n1"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Enemies/snake_bullet.gd" id="1_bo6a5"]
+[ext_resource type="PackedScene" uid="uid://cprnfetm7uukl" path="res://Scenes/Entities/EntityStates/float_forward.tscn" id="2_1srsc"]
+[ext_resource type="PackedScene" uid="uid://odqu5yxi82mk" path="res://Scenes/Entities/entity_sprite.tscn" id="3_8cjrd"]
+[ext_resource type="PackedScene" uid="uid://di6d8qmvioxkk" path="res://Scenes/Entities/EntityStates/dead.tscn" id="3_n035n"]
+[ext_resource type="Texture2D" uid="uid://ce8egc51m8k82" path="res://Sprites/Entities/Bullet/bullet.png" id="4_kyiif"]
+[ext_resource type="PackedScene" uid="uid://vhemid1ci73d" path="res://Scenes/Hitboxes/hitbox_spawner.tscn" id="4_we58d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qa21f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kyiif")
+}],
+"loop": true,
+"name": &"FloatForward",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx5pq"]
+size = Vector2(7, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpeso"]
+size = Vector2(9, 8)
+
+[node name="SnakeBullet" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_bo6a5")
+is_floating = true
+is_invincible = true
+state = "FloatForward"
+move_speed = 150
+move_accel = 100
+move_friction = 0
+jump_speed = 0
+gravity_accel = 0
+gravity_speed = 0
+score_value = 0
+counts_for_clear = false
+
+[node name="EntityStates" type="Node" parent="."]
+
+[node name="FloatForward" parent="EntityStates" instance=ExtResource("2_1srsc")]
+
+[node name="Dead" parent="EntityStates" instance=ExtResource("3_n035n")]
+
+[node name="EntitySprite" parent="." instance=ExtResource("3_8cjrd")]
+sprite_frames = SubResource("SpriteFrames_qa21f")
+animation = &"FloatForward"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mx5pq")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_kpeso")
+debug_color = Color(0.391578, 0.610797, 5.77569e-07, 0.42)
+
+[node name="HitboxSpawner" parent="." instance=ExtResource("4_we58d")]
+position = Vector2(0, 2)
+spawn_on_ready = true
+hitbox_height = 8
+hitbox_width = 6
+sound_effects = Array[String](["strike1", "hit"])

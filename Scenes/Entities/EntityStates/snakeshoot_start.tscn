@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://45jtyik3mr6n"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/EntityStates/snake_shoot_start.gd" id="1_ix4ka"]
+
+[node name="SnakeshootStart" type="Node"]
+script = ExtResource("1_ix4ka")

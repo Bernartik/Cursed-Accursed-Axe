@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuwoopw6g5ysg"]
+
+[ext_resource type="Script" path="res://Scripts/EntityControllers/ControllerComponents/land_detector.gd" id="1_2wkv6"]
+
+[node name="LandDetector" type="Node"]
+script = ExtResource("1_2wkv6")
